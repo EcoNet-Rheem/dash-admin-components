@@ -7,32 +7,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  * Boostrap 4 info box.
  */
 export default class InfoBox extends Component {
-	
+
 	constructor(props) {
         super(props);
     }
-	
-	render() {	
+
+	render() {
 		const {
-			children, 
-			className, 
-			value, 
-			title, 
-			elevation, 
-			color, 
+			children,
+			className,
+			value,
+			title,
+			elevation,
+			color,
 			icon_color,
-			gradient_color, 
-			icon, 
-			icon_elevation, 
-			width, 
-			loading_state, 
-			setProps, 
+			gradient_color,
+			icon,
+			icon_elevation,
+			width,
+			loading_state,
+			setProps,
+			footer_text,
+			footer_link,
+			extra_field,
+			extra_field_icon,
+			extra_field_icon_color,
+			main_div_className,
 			...otherProps
 		} = this.props;
-		
-		var IconTag, ContentTag
-		
-		IconTag = <span 
+
+		var IconTag,ContentTag,ExtraFieldTag,FooterTag
+
+		IconTag = <span
 			className={classnames(
 				'info-box-icon',
 				icon_elevation!=null ? `elevation-${icon_elevation}` : false,
@@ -41,25 +47,39 @@ export default class InfoBox extends Component {
 		>
 			<FontAwesomeIcon icon={icon}/>
 		</span>
-		
+		if (extra_field){
+			ExtraFieldTag =<span className="float-right infobox-extra-field">
+				<FontAwesomeIcon icon={extra_field_icon} color={extra_field_icon_color} size="lg"/>  {extra_field}
+			</span>
+		}
+		if (footer_text) {
+			if (footer_link) {
+				FooterTag = <a href={footer_link} target="_blank" className='small-box-footer infobox-view-more-link'>{footer_text}  <FontAwesomeIcon icon="angle-double-right"/></a>
+			} else {
+				FooterTag = <span className='small-box-footer infobox-view-more-link'>{footer_text}</span>
+			}
+		}
+
 		ContentTag = <div className="info-box-content">
 			<span className="info-box-text">
 				{title}
-			</span>		
+			</span>
 			<span className="info-box-number">
 				{value}
-			</span>	
+				{ExtraFieldTag}
+			</span>
 			{children}
+			{FooterTag}
 		</div>
-		
+
 		return (
-			<div 
-				className = {"col-sm-"+width}
+			<div
+				className = {classnames( `col-sm-${width}`,`${main_div_className}`)}
 				data-dash-is-loading={
 					(loading_state && loading_state.is_loading) || undefined
 				}
 			>
-				<div 
+				<div
 					className={classnames(
 						'info-box',
 						gradient_color!=null ? `bg-${gradient_color}-gradient` : false,
@@ -67,24 +87,24 @@ export default class InfoBox extends Component {
 						elevation!=null ? `elevation-${elevation}` : false,
 						className
 					)}
-					{...otherProps}         
+					{...otherProps}
 				>
 					{IconTag}
 					{ContentTag}
 				</div>
 			</div>
-		)               
-	} 
+		)
+	}
 }
-		
+
 InfoBox.defaultProps = {
 	icon: 'star',
-    icon_elevation: 3,
-	width: 4
+  icon_elevation: 0,
+	width: null
 };
 
 InfoBox.propTypes = {
-	
+
 	/**
 	* The ID of this component, used to identify dash components
 	* in callbacks. The ID needs to be unique across all of the
@@ -106,16 +126,16 @@ InfoBox.propTypes = {
 	* Often used with CSS to style elements with common properties.
 	*/
 	className: PropTypes.string,
-	
+
 	/**
 	* The width of the box, using the Bootstrap grid system. This is
     * used for row-based layouts. The overall width of a region is 12, so the
     * default width of 4 occupies 1/3 of that width. Default: 4.
 	*/
 	width: PropTypes.number,
-	
+
 	/**
-	* Box title. 
+	* Box title.
 	*/
 	title: PropTypes.string,
 
@@ -134,27 +154,27 @@ InfoBox.propTypes = {
 
 	/**
 	* A color for the info box, options: primary, secondary, success, info, warning, danger or NULL.
-    * Default: NULL. 
+    * Default: NULL.
 	*/
 	color: PropTypes.string,
 
 	/**
 	* A color for the info box icon, options: primary, secondary, success, info, warning, danger or NULL.
-    * Default: NULL. 
+    * Default: NULL.
 	*/
 	icon_color: PropTypes.string,
-	
+
 	/**
 	* A color for the box, options: primary, secondary, success, info, warning, danger or NULL.
-    * Default: NULL. 
+    * Default: NULL.
 	*/
 	gradient_color: PropTypes.string,
 
 	/**
-	* Box elevation. 
+	* Box elevation.
 	*/
 	elevation: PropTypes.number,
-	
+
 	/**
 	* Icon elevation compared to the main content. Default: 3.
 	*/
@@ -177,11 +197,37 @@ InfoBox.propTypes = {
 		*/
 		component_name: PropTypes.string
 	}),
-	
+
     /**
      * Dash-assigned callback that should be called whenever any of the
      * properties change
      */
-    setProps: PropTypes.func
-	
+		setProps: PropTypes.func,
+		/**
+		 * For Displaying Footer Text
+		 */
+		footer_text: PropTypes.string,
+
+		/**
+		 * For Footer Link  if this is available footertext will display as <a> tag
+		 */
+		footer_link: PropTypes.string,
+
+		/**
+		 * Add Extra Span Value After "Value" Field
+		 */
+		extra_field: PropTypes.string,
+
+		/**
+		 * Adds icon in Front of extra field value
+		 */
+		extra_field_icon: PropTypes.string,
+
+		/**
+		 * Extra field icon color
+		 */
+		extra_field_icon_color: PropTypes.string,
+
+		main_div_className: PropTypes.string
+
 };
