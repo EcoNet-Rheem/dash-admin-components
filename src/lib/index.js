@@ -35,6 +35,8 @@ import UserCard from './components/UserCard.react';
 import InfoBox from './components/InfoBox.react';
 import ValueBox from './components/ValueBox.react';
 import Icon from './components/icon/Icon.react';
+import GraphCard from "./components/graphcard/GraphCard.react";
+
 
 export {
     Page, 
@@ -69,4 +71,5 @@ export {
 	InfoBox, 
 	ValueBox,
 	Icon,
+	GraphCard,
 };
