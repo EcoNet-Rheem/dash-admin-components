@@ -15,7 +15,6 @@ export default class GraphCard extends Component {
 
   render() {
     const {
-      tag: Tag,
       className,
       innerRef,
       color,
@@ -25,16 +24,17 @@ export default class GraphCard extends Component {
       accentColor,
       cardTextContent,
       cardNumberContent,
-      graphContent,
       arrowContent,
       icon,
       arrowIcon,
       chartData,
       chartLabel,
+      width,
+      arrowIconColor,
       ...attributes
     } = this.props;
 
-    var chartArea, cardBody, cardNumberArea;
+    var chartArea, cardBody, cardNumberArea, cardFooterArea;
 
     const defaultDatasets = (() => {
       return [
@@ -64,8 +64,9 @@ export default class GraphCard extends Component {
           }]
         },
         tooltips: {
-          enabled: true
-        }
+          enabled: true,
+          placement: 'auto'
+        },
       }
     })()
 
@@ -91,8 +92,21 @@ export default class GraphCard extends Component {
       cardNumberArea = <div> <pre id="blank-number"> </pre> </div>
     }
 
+    cardFooterArea = <div className={classNames(className, 'card-footer')} >
+      <a className={classNames(
+        'btn-block',
+        'justify-content-between',
+        'align-items-center',
+      )}
+        href="#"
+      >
+        <span className={classNames('small', 'font-weight-bold')}>View More</span>
+      </a>
+      <FontAwesomeIcon icon={'caret-right'} id="view-more-icon" />
+    </div>
+
     return (
-      <div className={classNames('col-sm-6 col-lg-3')}>
+      <div className={classNames(`col-sm-${width}`)}>
         <div className={classNames(
           className,
           'card',
@@ -109,7 +123,7 @@ export default class GraphCard extends Component {
             id={cardBody}
             ref={innerRef}
           >
-            <div className={classNames('row')}>
+            <div className={classNames('row mt-2 mb-2 mr-4 ml-4')}>
               <div id="iconArea"><FontAwesomeIcon icon={icon} size="2x" /></div>
               <div id="contentArea">
                 {cardNumberArea}
@@ -117,14 +131,13 @@ export default class GraphCard extends Component {
               </div>
               <div id="changeLogArea">
                 <div className={classNames('mr-1')}>
-                  <FontAwesomeIcon icon={arrowIcon} />
+                  <FontAwesomeIcon icon={arrowIcon} color={arrowIconColor} />
                 </div>
                 {arrowContent}
               </div>
             </div>
             {chartArea}
           </div>
-
         </div>
       </div>
     )
@@ -143,9 +156,11 @@ GraphCard.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   accentColor: PropTypes.string,
+  width: PropTypes.number,
   ...sharedPropTypes
 }
 
 GraphCard.defaultProps = {
-  tag: 'div'
+  tag: 'div',
+  width: null
 }

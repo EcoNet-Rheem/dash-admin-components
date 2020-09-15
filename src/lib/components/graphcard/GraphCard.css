@@ -14,17 +14,26 @@
   background: linear-gradient(45deg, #e55353 0%, #d93737 100%) !important;
 }
 
+#gradientSuccess {
+  background: linear-gradient(45deg, #20c997 0%, #28a745 100%) !important;
+}
+
 #card-number {
   font-weight: bold;
   font-size: larger;
 }
 
 #blank-number {
-  margin: 0.25rem;
+  margin: 0%;
+  padding: 0.25rem;
 }
 
 .chart-wrapper #barChart {
   height: 70px;
+}
+
+#barChart {
+  margin: 1%;
 }
 
 #cardBodyPadding {
@@ -44,4 +53,29 @@
   margin: auto;
   margin-right: 0%;
   display: inline-flex;
+}
+
+#card-hr {
+  margin: 0.1rem;
+}
+
+#view-more-icon {
+  float: right;
+  margin-top: 0.25rem;
+}
+
+.card-footer {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+}
+
+.btn-block {
+  color: #ffffff;
+}
+
+.btn-block:hover {
+  text-decoration: underline;
+  color: #faebdf;
 }
