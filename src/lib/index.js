@@ -36,6 +36,7 @@ import InfoBox from './components/InfoBox.react';
 import ValueBox from './components/ValueBox.react';
 import Icon from './components/icon/Icon.react';
 import GraphCard from "./components/graphcard/GraphCard.react";
+import Toast from "./components/toast/Toast.react";
 
 
 export {
@@ -72,4 +73,5 @@ export {
 	ValueBox,
 	Icon,
 	GraphCard,
+	Toast,
 };
