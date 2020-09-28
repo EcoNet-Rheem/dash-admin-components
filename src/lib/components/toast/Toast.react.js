@@ -37,7 +37,7 @@ export default class Toast extends Component {
       notify = () => toast.success(message, notifyOptions);
     } else if (toastType === 'warning') {
       notify = () => toast.warning(message, notifyOptions);
-    } else if (toastType === 'error') {
+    } else if (toastType === 'error' || toastType === 'danger') {
       notify = () => toast.error(message, notifyOptions);
     }
 
@@ -45,7 +45,7 @@ export default class Toast extends Component {
 
     return (
       <div>
-        <ToastContainer />
+        <ToastContainer style={{width: "500px"}} />
       </div>
     );
 
