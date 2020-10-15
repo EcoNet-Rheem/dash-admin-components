@@ -31,6 +31,7 @@ export default class GraphCard extends Component {
       chartLabel,
       width,
       arrowIconColor,
+      showFooter,
       ...attributes
     } = this.props;
 
@@ -92,18 +93,20 @@ export default class GraphCard extends Component {
       cardNumberArea = <div> <pre id="blank-number"> </pre> </div>
     }
 
-    cardFooterArea = <div className={classNames(className, 'card-footer')} >
-      <a className={classNames(
-        'btn-block',
-        'justify-content-between',
-        'align-items-center',
-      )}
-        href="#"
-      >
-        <span className={classNames('small', 'font-weight-bold')}>View More</span>
-      </a>
-      <FontAwesomeIcon icon={'caret-right'} id="view-more-icon" />
-    </div>
+    if (showFooter) {
+      cardFooterArea = <div className={classNames(className, 'card-footer')} >
+        <a className={classNames(
+          'btn-block',
+          'justify-content-between',
+          'align-items-center',
+        )}
+          href="#"
+        >
+          <span className={classNames('small', 'font-weight-bold')}>View More</span>
+        </a>
+        <FontAwesomeIcon icon={'caret-right'} id="view-more-icon" />
+      </div>
+    }
 
     return (
       <div className={classNames(`col-sm-${width}`)}>
@@ -138,6 +141,7 @@ export default class GraphCard extends Component {
             </div>
             {chartArea}
           </div>
+          {cardFooterArea}
         </div>
       </div>
     )

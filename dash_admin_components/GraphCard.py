@@ -37,6 +37,7 @@ class GraphCard(Component):
         chartOptions=Component.UNDEFINED,
         icon=Component.UNDEFINED,
         chartLabel=Component.UNDEFINED,
+        showFooter=Component.UNDEFINED,
         **kwargs
     ):
         self._prop_names = [
@@ -70,6 +71,7 @@ class GraphCard(Component):
             "arrowIcon",
             "arrowIconColor",
             "chartLabel",
+            "showFooter",
         ]
         self._type = "GraphCard"
         self._namespace = "dash_admin_components"
@@ -105,6 +107,7 @@ class GraphCard(Component):
             "chartLabel",
             "arrowIcon",
             "arrowIconColor",
+            "showFooter",
         ]
         self.available_wildcard_properties = []
 
