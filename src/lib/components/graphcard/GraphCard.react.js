@@ -32,6 +32,7 @@ export default class GraphCard extends Component {
       width,
       arrowIconColor,
       showFooter,
+      footerContent,
       ...attributes
     } = this.props;
 
@@ -94,13 +95,17 @@ export default class GraphCard extends Component {
     }
 
     if (showFooter) {
-      cardFooterArea = <div className={classNames(className, 'card-footer')} >
+      cardFooterArea = <div id="graphCardFooter" className={classNames(className, 'card-footer')} >
         <a className={classNames(
           'btn-block',
           'justify-content-between',
           'align-items-center',
         )}
           href="#"
+          onClick={() => {
+            if (footerContent) {
+              localStorage.setItem("footerContent", footerContent)
+            }}}
         >
           <span className={classNames('small', 'font-weight-bold')}>View More</span>
         </a>
