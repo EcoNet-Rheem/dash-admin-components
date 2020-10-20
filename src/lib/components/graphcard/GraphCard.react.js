@@ -11,7 +11,17 @@ export default class GraphCard extends Component {
 
   constructor(props) {
     super(props);
+    this.incrementClicks = this.incrementClicks.bind(this);
   }
+
+  incrementClicks() {
+		if (!this.props.disabled && this.props.setProps) {
+			this.props.setProps({
+				n_clicks: this.props.n_clicks + 1,
+				n_clicks_timestamp: Date.now()
+			});
+		}
+	}
 
   render() {
     const {
@@ -103,8 +113,9 @@ export default class GraphCard extends Component {
         )}
           href="#"
           onClick={() => {
+            this.incrementClicks();
             if (footerContent) {
-              localStorage.setItem("footerContent", footerContent)
+              sessionStorage.setItem("footerContent", footerContent)
             }}}
         >
           <span className={classNames('small', 'font-weight-bold')}>View More</span>

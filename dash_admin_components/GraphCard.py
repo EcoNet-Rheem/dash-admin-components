@@ -39,6 +39,8 @@ class GraphCard(Component):
         chartLabel=Component.UNDEFINED,
         showFooter=Component.UNDEFINED,
         footerContent=Component.UNDEFINED,
+        n_clicks=Component.UNDEFINED,
+        n_clicks_timestamp=Component.UNDEFINED,
         **kwargs
     ):
         self._prop_names = [
@@ -74,6 +76,8 @@ class GraphCard(Component):
             "chartLabel",
             "showFooter",
             "footerContent",
+            "n_clicks",
+            "n_clicks_timestamp",
         ]
         self._type = "GraphCard"
         self._namespace = "dash_admin_components"
@@ -111,6 +115,8 @@ class GraphCard(Component):
             "arrowIconColor",
             "showFooter",
             "footerContent",
+            "n_clicks",
+            "n_clicks_timestamp",
         ]
         self.available_wildcard_properties = []
 
