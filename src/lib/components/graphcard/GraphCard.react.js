@@ -15,7 +15,9 @@ export default class GraphCard extends Component {
   }
 
   incrementClicks() {
-		if (!this.props.disabled && this.props.setProps) {
+		if (this.props.setProps) {
+      console.log('got event');
+      console.log('incrementing n_cliks');
 			this.props.setProps({
 				n_clicks: this.props.n_clicks + 1,
 				n_clicks_timestamp: Date.now()
@@ -40,6 +42,7 @@ export default class GraphCard extends Component {
       chartData,
       chartLabel,
       width,
+      id,
       arrowIconColor,
       showFooter,
       footerContent,
@@ -105,19 +108,13 @@ export default class GraphCard extends Component {
     }
 
     if (showFooter) {
-      cardFooterArea = <div id="graphCardFooter" className={classNames(className, 'card-footer')} >
+      cardFooterArea = <div id={`card-footer-${id}`} className={classNames(className, 'card-footer')} >
         <a className={classNames(
           'btn-block',
           'justify-content-between',
           'align-items-center',
         )}
-          href="#"
-          onClick={() => {
-            this.incrementClicks();
-            if (footerContent) {
-              sessionStorage.setItem("footerContent", footerContent)
-            }}}
-        >
+          onClick={this.incrementClicks}>
           <span className={classNames('small', 'font-weight-bold')}>View More</span>
         </a>
         <FontAwesomeIcon icon={'caret-right'} id="view-more-icon" />
@@ -125,7 +122,7 @@ export default class GraphCard extends Component {
     }
 
     return (
-      <div className={classNames(`col-sm-${width}`)}>
+      <div id={id} className={classNames(`col-sm-${width}`)}>
         <div className={classNames(
           className,
           'card',
@@ -172,6 +169,12 @@ export const sharedPropTypes = {
 }
 
 GraphCard.propTypes = {
+	/**
+	* The ID of this component, used to identify dash components
+	* in callbacks. The ID needs to be unique across all of the
+	* components in an app.
+	*/
+	id: PropTypes.string,
   tag: tagPropType,
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   innerRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
