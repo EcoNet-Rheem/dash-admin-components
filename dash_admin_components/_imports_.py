@@ -30,6 +30,8 @@ from .TabBoxMenu import TabBoxMenu
 from .TabBoxMenuItem import TabBoxMenuItem
 from .TabItem import TabItem
 from .TabItems import TabItems
+from .GraphCard import GraphCard
+from .Toast import Toast
 
 __all__ = [
     "Body",
@@ -63,5 +65,7 @@ __all__ = [
     "TabBoxMenu",
     "TabBoxMenuItem",
     "TabItem",
-    "TabItems"
+    "TabItems",
+    "GraphCard",
+    "Toast",
 ]

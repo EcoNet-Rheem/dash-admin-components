@@ -1,0 +1,81 @@
+#gradientPrimary {
+  background: linear-gradient(45deg, #321fdb 0%, #1f1498 100%) !important;
+}
+
+#gradientInfo {
+  background: linear-gradient(45deg, #39f 0%, #2982cc 100%) !important;
+}
+
+#gradientWarning {
+  background: linear-gradient(45deg, #f9b115 0%, #f6960b 100%) !important;
+}
+
+#gradientDanger {
+  background: linear-gradient(45deg, #e55353 0%, #d93737 100%) !important;
+}
+
+#gradientSuccess {
+  background: linear-gradient(45deg, #20c997 0%, #28a745 100%) !important;
+}
+
+#card-number {
+  font-weight: bold;
+  font-size: larger;
+}
+
+#blank-number {
+  margin: 0%;
+  padding: 0.25rem;
+}
+
+.chart-wrapper #barChart {
+  height: 70px;
+}
+
+#barChart {
+  margin: 1%;
+}
+
+#cardBodyPadding {
+  padding-bottom: 1%;
+}
+
+#iconArea {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+#contentArea {
+  margin-left: 5%;
+}
+
+#changeLogArea {
+  margin: auto;
+  margin-right: 0%;
+  display: inline-flex;
+}
+
+#card-hr {
+  margin: 0.1rem;
+}
+
+#view-more-icon {
+  float: right;
+  margin-top: 0.25rem;
+}
+
+.card-footer {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+}
+
+.btn-block {
+  color: #ffffff;
+}
+
+.btn-block:hover {
+  text-decoration: underline;
+  color: #faebdf;
+}
